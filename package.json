@@ -59,13 +59,15 @@
     "yorkie": "^2.0.0"
   },
   "gitHooks": {
-    "pre-commit": "lint-staged",
+    "pre-commit": "lint-staged --concurrent false",
     "commit-msg": "node scripts/verifyCommit.js"
   },
   "lint-staged": {
     "*": [
-      "prettier --write .",
-      "eslint packages/*/src/**"
+      "prettier --write ."
+    ],
+    "*.ts": [
+      "eslint --ext .ts packages/*/src/**/*.ts"
     ]
   }
 }
